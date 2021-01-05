@@ -42,3 +42,23 @@ function renderUserInfo(data) {
     $(".text-avatar").text(first).show();
   }
 }
+// =========================== 实现退出功能 =================
+
+$("#logoutBtn").click(function () {
+    layer.confirm("确认退出吗?", { icon: 3, title: "提示" }, function (index) {
+      // 点击确认按钮会执行该函数
+      // console.log(index); // 弹出层的索引
+  
+      // 退出登录要做啥：就是和当初登录做的事情反过来即可
+      // 1. 删除本地存储的token
+      // 2. 跳转回登录页面
+  
+      // 1.
+      localStorage.removeItem("token");
+  
+      // 2.
+      location.href = "/home/login.html";
+  
+      layer.close(index); // 按照index索引来关闭对应的弹出层
+    });
+  });
